@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Interfaz de Usuario Bootstrap, jQuery, PHP y MySQL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desarrollando una interfaz de usuario para aplicación web">
+    <meta name="author" content="Luis Fernando Cázares Bulbarela">
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/default_layout.css">
+
+    {% block extraCSS %} {% endblock %}
+
+
+    <script type="text/javascript" src="js_libs/jquery/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js_libs/bootstrap/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      // DropDown
+      $('.dropdown-toggle').dropdown();
+
+      // Carousel
+      $('.carousel').carousel();
+
+    </script>
+
+    {% block javascripts %}{% endblock %}
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="brand">Interfaz de Usuario</div>
+
+          <div class="nav-collapse collapse">
+
+            {% block menu %} {% endblock%}
+
+            {% block loginUser %} {% endblock %}
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      {% block contenidos %}
+        <section class="container">
+          <div id="imageSlider" class="carousel slide">
+          <!-- Carousel items -->
+            <div class="carousel-inner">
+              <div class="active item">
+                <img alt="" src="images/ui_php_image_c.jpg">
+              </div>
+              <div class="item">
+                <img alt="" src="images/ui_php_image_e.jpg">
+              </div>
+              <div class="item">
+                <img alt="" src="images/ui_php_image_a.jpg">
+              </div>
+              <div class="item">
+                <img alt="" src="images/ui_php_image_d.jpg">
+              </div>
+              <div class="item">
+                <img alt="" src="images/ui_php_image_b.jpg">
+              </div>
+            </div>
+
+            <a class="carousel-control left" href="#imageSlider" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#imageSlider" data-slide="next">&rsaquo;</a>
+
+          </div> 
+        </section>
+
+        <section class="row-fluid">
+          <div class="span4 well well-small">
+            <h2>Ayuda</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-warning" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="span4 well well-small">
+            <h2>Noticias</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-inverse" href="#">View details &raquo;</a></p>
+         </div>
+          <div class="span4 well well-small">
+            <h2>Twitter</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-success" href="#">View details &raquo;</a></p>
+          </div>
+        </section>
+      {% endblock %}
+      <hr>
+      <footer>
+        <p>&copy; Diseño & Desarrollo Web Luis Fernando Cázares 2012</p>
+      </footer>
+
+    </div>
+          
+  </body>
+</html>

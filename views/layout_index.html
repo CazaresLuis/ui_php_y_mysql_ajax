@@ -1,0 +1,27 @@
+{# Heredando la plantilla principal #}
+
+{% extends 'default_layout.html' %}
+
+{% block contenidos %} {% endblock %}
+
+{% block menu %}
+<ul class="nav">
+  <li class="active"><a href="#"><i class="icon-home icon-white"></i> Inicio</a></li>
+  <li><a href="#"><i class="icon-briefcase icon-white"></i> Catálogo</a></li>
+  <li><a href="#"><i class="icon-wrench icon-white"></i> Herramientas</a></li>
+  <li><a href="#"><i class="icon-cog icon-white"></i> Administración</a></li>
+</ul>
+{% endblock %}
+
+{% block loginUser %}
+<ul class="nav pull-right">
+  <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Nombre del Usuario <b class="caret"></b></a>
+      <ul class="dropdown-menu" id="opcionesUsuario">
+        <li><a href="perfil"><i class="icon-cog"></i> Perfil</a></li>
+        <li class="divider"></li>
+        <li><a href="logout.php"><i class="icon-off"></i> Cerrar Sesión</a></li>
+      </ul>
+  </li>
+</ul>
+{% endblock %}
