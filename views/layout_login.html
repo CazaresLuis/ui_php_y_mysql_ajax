@@ -8,11 +8,11 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Login <b class="caret"></b></a>
   <ul class="dropdown-menu login-form">
       <li>
-        <form method="post" class="js-signin signin" action="">
+        <form method="post" action="" id="formLogin" name="formLogin">
           <fieldset id="datosAcceso">
             <label class="control-label usuario" for="usr_email">Correo Electrónico</label>
             <span></span>
-            <input type="text" id="usr_email" name="usr_email" required placeholder="correo@electronico.com" class="{required:true,rangelength: [10, 120]}"/>
+            <input type="text" id="usr_email" name="usr_email" required placeholder="correo@electronico.com" class="{required:true,email:true}"/>
             <label class="control-label usuario" for="usr_pass">Clave de acceso</label>
             <span></span>
             <input type="password" id="usr_pass" name="usr_pass" required class="{required:true,rangelength: [10, 10]}"/>
@@ -31,4 +31,60 @@
     </ul>
 </li>
 </ul>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="js_libs/jquery-validation-1.10.0/jquery.metadata.js" type="text/javascript"></script>
+  <script src="js_libs/jquery-validation-1.10.0/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="js_libs/jquery-validation-1.10.0/localization/messages_es.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      // Valiar el formulario
+      $('#formLogin').validate({
+        submitHandler: function(){
+          var str = $('#formLogin').serialize();
+
+          // alert(str);
+
+          // Ejecutamos nuestro AJAX con jquery
+          $.ajax({
+            beforeSend: function(){
+                // Verificamos si hay mensaje de error visible
+                if($('#loginError').is(':visible')){
+                   $('#loginError').addClass('hide');
+                }
+                
+                $('#ajaxLoader').removeClass('hide');
+            },
+            cache: false,
+            type: "POST",
+            dataType: "json",
+            url:"includes/appResponses.inc.php",
+            data:str + "&accion=login&id=" + Math.random(),
+            success: function(response){
+              // Verificar errores
+              if(response.respuesta == true){
+                alert(response.mensaje);
+              }else{
+                $('#loginError').removeClass('hide');
+              }
+
+              $('#ajaxLoader').addClass('hide');
+
+            },
+            error:function(){
+                alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+            }
+          });
+
+          return false;
+
+        },
+        errorPlacement: function(error, element){
+           error.appendTo(element.prev("span").append());
+        }
+      });
+    });
+  </script>
 {% endblock %}
