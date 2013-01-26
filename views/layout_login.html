@@ -54,7 +54,7 @@
                 if($('#loginError').is(':visible')){
                    $('#loginError').addClass('hide');
                 }
-                
+                  
                 $('#ajaxLoader').removeClass('hide');
             },
             cache: false,
@@ -65,7 +65,7 @@
             success: function(response){
               // Verificar errores
               if(response.respuesta == true){
-                alert(response.mensaje);
+                window.location.href='index.php';
               }else{
                 $('#loginError').removeClass('hide');
               }

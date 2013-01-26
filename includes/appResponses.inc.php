@@ -1,4 +1,7 @@
 <?php
+session_name('demoUI');
+session_start();
+
 // array de salida
 $appResponse = array(
 	"respuesta" => false,
@@ -9,19 +12,29 @@ $appResponse = array(
 // Verificamos las variables post y que exista la variable accion
 if(isset($_POST) && !empty($_POST) && isset($_POST['accion'])){
 
-	switch ($_POST['accion']) {
-	case 'login':
-		$appResponse = array(
-			"respuesta" => true,
-			"mensaje" => "Ejecución de AJAX Satisfactoria",
-			"contenido" => ""
-		);
-	break;
-	
-	default:
-		$appResponse['mensaje'] = "Opción no disponible";
-	break;
+	// incluimos el archivo de funciones y conexión a la base de datos
+	include('mainFunctions.inc.php');
+
+	if($errorDbConexion == false){
+
+		switch ($_POST['accion']) {
+		case 'login':
+			sleep(3);
+			
+			$appResponse['respuesta'] = userLogin($_POST,$mysqli);
+			$appResponse['mensaje'] = "Usuario Encontrado";
+
+		break;
+		
+		default:
+			$appResponse['mensaje'] = "Opción no disponible";
+		break;
+		}
+
+	}else{
+		$appResponse['mensaje'] = "Error al conectar con la base de datos";
 	}
+		
 }
 else{
 	$appResponse['mensaje'] = "Variables no definidas";
