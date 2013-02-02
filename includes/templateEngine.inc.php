@@ -3,9 +3,6 @@
 // Preparando el engine de templates
 // Twig
 
-// Forzamos a que no se muestren errores
-ini_set("display_errors", 0);
-
 // Incluimos Twig Auto Loader
 require($root . 'php_libs/Twig/Autoloader.php');
 Twig_Autoloader::register();

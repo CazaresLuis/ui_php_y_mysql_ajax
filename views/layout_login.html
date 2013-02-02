@@ -25,7 +25,7 @@
             <button class="btn btn-small btn-info" type="submit" id="btnLogin">Iniciar sesión</button>
           </fieldset>
           <div class="divider"></div>
-          <a href="#" class="btn btn-link">¿Olvidaste tu contraseña?</a><br>
+          <a href="" class="btn btn-link" id="recPass">¿Olvidaste tu contraseña?</a><br>
         </form>
       </li>
     </ul>
@@ -33,10 +33,38 @@
 </ul>
 {% endblock %}
 
+
+{% block dialog %}
+<div id="recuperaPass" title="Recuperación de contraseña" class="hide">
+  <p>Para recuperar la contraseña en necesario ingrese el correo electrónico con el que inicia sesión.</p>
+  <form class="form-horizontal" id="formSendCode" name="formSendCode">
+    <fieldset id="datosCorreo">
+      <label for="rec_correo">Correo Electrónico </label>
+      <span></span>
+      <input type="text" id="rec_correo" name="rec_correo" required placeholder="email@dominio.com" class="{required:true,email:true, maxlength:150} span3"/>
+    </fieldset>
+    <fieldset id="responseAjax" style="text-align:center;">
+      <img alt="" src="images/ajax-loader.gif" id="ajaxLoaderRecuperar" class="hide">
+      <div class="alert alert-error font-small hide" id="correoError"><strong>No se encontró un correo electrónico coincidente, intente de nuevo por favor</strong></div>
+    </fieldset>
+    <fieldset id="botonera" class="small-padding" style="text-align:center;">
+      <button class="btn btn-small btn-info" type="submit" id="btnCorreo">Continuar</button>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
+
+{% block extraCSS %}
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.9.2.custom.min.css">
+{% endblock %}
+
+
 {% block javascripts %}
   <script src="js_libs/jquery-validation-1.10.0/jquery.metadata.js" type="text/javascript"></script>
   <script src="js_libs/jquery-validation-1.10.0/jquery.validate.min.js" type="text/javascript"></script>
   <script src="js_libs/jquery-validation-1.10.0/localization/messages_es.js" type="text/javascript"></script>
+
+  <script src="js_libs/jquery/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
 
   <script type="text/javascript">
     $(function(){
@@ -63,6 +91,9 @@
             url:"includes/appResponses.inc.php",
             data:str + "&accion=login&id=" + Math.random(),
             success: function(response){
+
+              // alert(response);
+
               // Verificar errores
               if(response.respuesta == true){
                 window.location.href='index.php';
@@ -75,6 +106,7 @@
             },
             error:function(){
                 alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+                $('#ajaxLoader').addClass('hide');
             }
           });
 
@@ -85,6 +117,40 @@
            error.appendTo(element.prev("span").append());
         }
       });
+      
+      // Ventana de diálogo de recuperación de contraseña
+      $('#recuperaPass').dialog({
+        autoOpen:false,
+        modal:true,
+        width:'auto',
+        minHeight: 'auto',
+        close:function(){
+          $('#rec_correo').val('');
+        }
+      });
+
+      // Mostrar la ventana de diálogo de recuperación de contraseña
+      $('body').on('click','#recPass',function(elemento){
+        elemento.preventDefault();
+
+        $('#recuperaPass').dialog('open');
+
+      });
+
+      // Validamos el formulario de recuperación de correo electrónico
+      $('#formSendCode').validate({
+          submitHandler: function(){
+            var formData = $('#formSendCode').serialize();
+
+            alert(formData);
+
+            return false;
+          },
+          errorPlacement: function(error, element) {
+              error.appendTo(element.prev("span").append());
+          }
+      });
+
     });
   </script>
 {% endblock %}

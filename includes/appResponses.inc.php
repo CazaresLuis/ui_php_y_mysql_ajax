@@ -2,6 +2,7 @@
 session_name('demoUI');
 session_start();
 
+
 // array de salida
 $appResponse = array(
 	"respuesta" => false,
@@ -19,7 +20,6 @@ if(isset($_POST) && !empty($_POST) && isset($_POST['accion'])){
 
 		switch ($_POST['accion']) {
 		case 'login':
-			sleep(3);
 			
 			$appResponse['respuesta'] = userLogin($_POST,$mysqli);
 			$appResponse['mensaje'] = "Usuario Encontrado";
