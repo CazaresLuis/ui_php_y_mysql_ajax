@@ -116,19 +116,19 @@ function mandaCorreo($mail,$data=''){
 	';
 
 	$mail->IsSMTP(); // telling the class to use SMTP
-	$mail->Host       = "mail.worldcargoexport.com"; // SMTP server
+	$mail->Host       = ""; // SMTP server
 	// $mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
 	                                           // 1 = errors and messages
 	                                           // 2 = messages only
 	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->Host       = "mail.worldcargoexport.com"; // sets the SMTP server
+	$mail->Host       = ""; // sets the SMTP server
 	$mail->Port       = 26;                    // set the SMTP port for the GMAIL server
-	$mail->Username   = "alertas-no-reply@worldcargoexport.com"; // SMTP account username
-	$mail->Password   = "06107210";        // SMTP account password
+	$mail->Username   = ""; // SMTP account username
+	$mail->Password   = "";        // SMTP account password
 
-	$mail->SetFrom('alertas-no-reply@worldcargoexport.com', '.:: Interfaz de Usuario ::.');
+	$mail->SetFrom('', '.:: Interfaz de Usuario ::.');
 
-	$mail->AddReplyTo('alertas-no-reply@worldcargoexport.com', '.:: Interfaz de Usuario ::.');
+	$mail->AddReplyTo('', '.:: Interfaz de Usuario ::.');
 
 	$mail->Subject    = utf8_decode(".:: Interfaz de Usuario ::. Recuperación de contraseña");
 
