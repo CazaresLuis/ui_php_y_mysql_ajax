@@ -45,7 +45,7 @@
     </fieldset>
     <fieldset id="responseAjax" style="text-align:center;">
       <img alt="" src="images/ajax-loader.gif" id="ajaxLoaderRecuperar" class="hide">
-      <div class="alert alert-error font-small hide" id="correoError"><strong>No se encontró un correo electrónico coincidente, intente de nuevo por favor</strong></div>
+      <div class="alert alert-error font-small hide" id="correoError"><strong><span id="mensajeError">No se encontró un correo electrónico coincidente, intente de nuevo por favor</span></strong></div>
     </fieldset>
     <fieldset id="botonera" class="small-padding" style="text-align:center;">
       <button class="btn btn-small btn-info" type="submit" id="btnCorreo">Continuar</button>
@@ -142,8 +142,40 @@
           submitHandler: function(){
             var formData = $('#formSendCode').serialize();
 
-            alert(formData);
+            // ajax para ejecutar la recuperación de contraseña
+            $.ajax({
+              beforeSend: function(){
+                  // Verificamos si hay mensaje de error visible
+                  if($('#correoError').is(':visible')){
+                     $('#correoError').addClass('hide');
+                  }
+                    
+                  $('#ajaxLoaderRecuperar').removeClass('hide');
+              },
+              cache: false,
+              type: "POST",
+              dataType: "json",
+              url:"includes/appResponses.inc.php",
+              data:formData + "&accion=recuperaPass&id=" + Math.random(),
+              success: function(response){
 
+                if(response.respuesta == true){
+                  alert('Se ha enviado su contraseña con éxito');
+
+                  $('#recuperaPass').dialog('close');
+                }
+                else{
+                  alert(response.mensaje);
+                }
+                  
+                $('#ajaxLoaderRecuperar').addClass('hide');
+
+              },
+              error:function(){
+                  alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+                  $('#ajaxLoaderRecuperar').addClass('hide');
+              }
+            });
             return false;
           },
           errorPlacement: function(error, element) {
