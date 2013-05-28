@@ -2,12 +2,28 @@
 
 {% extends 'default_layout.html' %}
 
-{% block contenidos %}{% endblock %}
+{% block contenidos %}
+<section>
+  <ul class="breadcrumb">
+    <li><a href="index.php">Inicio</a> <span class="divider">/</span></li>
+    <li>Catálogo</li>
+  </ul>
+</section>
+<div class="hero-unit">
+  <h1>Encabezado</h1>
+  <p>Cargamos una nueva página, esta es la forma más usada aunque se pueden utilizar técnicas como AJAX o mostrar u ocultar secciones por medio de javascript (jquery)</p>
+  <p>
+  <a class="btn btn-primary btn-large">
+  Ler más...
+  </a>
+  </p>
+</div>
+{% endblock %}
 
 {% block menu %}
 <ul class="nav">
-  <li class="active"><a id="goHome" href="index.php"><i class="icon-home icon-white"></i> Inicio</a></li>
-  <li><a id="goCatalogo" href="catalogo.php"><i class="icon-briefcase icon-white"></i> Catálogo</a></li>
+  <li><a id="goHome" href="index.php"><i class="icon-home icon-white"></i> Inicio</a></li>
+  <li class="active"><a id="goCatalogo" href="catalogo.php"><i class="icon-briefcase icon-white"></i> Catálogo</a></li>
   <li><a id="goHerramientas" href="#"><i class="icon-wrench icon-white"></i> Herramientas</a></li>
   <li><a id="goAdministracion" href="#" data-accion="administracion"><i class="icon-cog icon-white"></i> Administración</a></li>
 </ul>
@@ -25,4 +41,3 @@
   </li>
 </ul>
 {% endblock %}
-

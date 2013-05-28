@@ -23,6 +23,49 @@
       // Carousel
       $('.carousel').carousel();
 
+      // Cargamos por medio de ajax
+      $(function(){
+        // Cargar Menú Herramientas
+        $('body').on('click','#goHerramientas',function(element){
+          element.preventDefault();
+
+          $('#contentContainer').load('views/herramientas.html');
+
+        });
+
+        // Cargamos Administración
+        $('body').on('click','#goAdministracion',function(element){
+          element.preventDefault();
+
+          var accion = $(this).attr('data-accion');
+
+          // ajax para ejecutar la recuperación de contraseña
+          $.ajax({
+            beforeSend: function(){
+              // aquí podemos llamar otra acción
+            },
+            cache: false,
+            type: "POST",
+            dataType: "json",
+            url:"includes/appResponses.inc.php",
+            data:"accion="+ accion + "&id=" + Math.random(),
+            success: function(response){
+              if(response.respuesta == true){
+                $('#contentContainer').html(response.contenido);
+              }
+              else{
+                alert('error en la aplicación');
+              }
+            },
+            error:function(){
+                alert('ERROR GENERAL DEL SISTEMA, INTENTE MAS TARDE');
+            }
+          });
+
+        });
+
+      });
+
     </script>
 
     {% block javascripts %}{% endblock %}
@@ -32,7 +75,7 @@
   <body>
     {% block dialog %}{% endblock %}
     
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -54,7 +97,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div id="contentContainer" class="container">
       {% block contenidos %}
         <section class="container">
           <div id="imageSlider" class="carousel slide">

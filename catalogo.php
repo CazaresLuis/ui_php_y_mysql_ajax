@@ -11,7 +11,7 @@ if(!empty($_SESSION) && $_SESSION['userLogin'] == true){
 	include('includes/templateEngine.inc.php');
 
 	// Cargamos la plantilla
-	$twig->display('layout_index.html',array(
+	$twig->display('layout_catalogo.html',array(
 		"userName" => $_SESSION['userNombre'],
 		"userID" => $_SESSION['userID']
 	));

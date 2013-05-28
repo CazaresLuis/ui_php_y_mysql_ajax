@@ -68,6 +68,31 @@ if(isset($_POST) && !empty($_POST) && isset($_POST['accion'])){
 			}
 		break;
 
+		case 'administracion':
+			$appResponse = array(
+				"respuesta" => true,
+				"mensaje" => "",
+				"contenido" => '
+					<section>
+					  <ul class="breadcrumb">
+					    <li><a href="index.php">Inicio</a> <span class="divider">/</span></li>
+					    <li>Administración</li>
+					  </ul>
+					</section>
+					<div class="hero-unit">
+					  <h1>Administración</h1>
+					  <p>Esta sección se esta cargando por medio de ajax con la función $.ajax() de jquery.</p>
+					  <p>
+					  <a class="btn btn-primary btn-large">
+					  Leer más...
+					  </a>
+					  </p>
+					</div>
+				'
+			);
+
+		break;
+
 		default:
 			$appResponse['mensaje'] = "Opción no disponible";
 		break;

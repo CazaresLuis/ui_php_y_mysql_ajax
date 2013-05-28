@@ -918,9 +918,9 @@
         <color>13421772</color>
       </controlProperties>
     </control>
-    <control controlID="87" controlTypeID="com.balsamiq.mockups::Link" x="1263" y="374" w="-1" h="-1" measuredW="120" measuredH="21" zOrder="47" locked="false" isInGroup="-1">
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Link" x="1246" y="376" w="-1" h="-1" measuredW="155" measuredH="21" zOrder="47" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>recuperar%20password</text>
+        <text>%BFOlvidaste%20tu%20contrase%F1a%3F</text>
       </controlProperties>
     </control>
     <control controlID="90" controlTypeID="__group__" x="1418" y="192" w="16" h="16" measuredW="16" measuredH="16" zOrder="48" locked="false" isInGroup="-1">
@@ -1015,6 +1015,47 @@
       <controlProperties>
         <color>13421772</color>
       </controlProperties>
+    </control>
+    <control controlID="114" controlTypeID="__group__" x="724" y="357" w="450" h="144" measuredW="450" measuredH="144" zOrder="61" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="0" w="450" h="144" measuredW="450" measuredH="144" zOrder="0" locked="false" isInGroup="114">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="0" y="0" w="450" h="144" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <bottomheight>37</bottomheight>
+                <close>true</close>
+                <maximizeRestore>false</maximizeRestore>
+                <minimize>false</minimize>
+                <text>Recuperaci%F3n%20de%20Contrase%F1a</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="283" y="113" w="-1" h="-1" measuredW="77" measuredH="24" zOrder="1" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Continuar</text>
+              </controlProperties>
+            </control>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="370" y="113" w="-1" h="-1" measuredW="74" measuredH="24" zOrder="2" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Cancelar</text>
+              </controlProperties>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::TextInput" x="38" y="69" w="373" h="-1" measuredW="115" measuredH="24" zOrder="3" locked="false" isInGroup="0">
+              <controlProperties>
+                <backgroundAlpha>1</backgroundAlpha>
+                <color>15658734</color>
+                <state>focused</state>
+                <text>correo%20electr%F3nico</text>
+              </controlProperties>
+            </control>
+            <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="38" y="43" w="-1" h="-1" measuredW="255" measuredH="21" zOrder="4" locked="false" isInGroup="0">
+              <controlProperties>
+                <bold>true</bold>
+                <text>Ingrese%20la%20direcci%F3n%20de%20correo%20electr%F3nico</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
     </control>
   </controls>
 </mockup>
